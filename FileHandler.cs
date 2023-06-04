@@ -33,7 +33,7 @@ namespace Music_Catalog
             catch (Exception e)
             {
                 Console.WriteLine("Произошла ошибка при сериализации объекта: " + e.Message);
-                logger.Info("Произошла ошибка при сериализации объекта, файл: (" + filePath + ") Файл не записан!");
+                logger.Error("Произошла ошибка при сериализации объекта, файл: (" + filePath + ") Файл не записан!");
             }
         }
 
@@ -54,14 +54,14 @@ namespace Music_Catalog
                 catch (Exception e)
                 {
                     Console.WriteLine("Ошибка чтения объекта из XML файла: (" + filePath + ") Некорректный формат данных! Тип ошибки: " + e.Message);
-                    logger.Info("Ошибка чтения объекта из XML файла: (" + filePath + ") Некорректный формат данных! Тип ошибки: " + e.Message);
+                    logger.Error("Ошибка чтения объекта из XML файла: (" + filePath + ") Некорректный формат данных! Тип ошибки: " + e.Message);
                     return default;
                 }
 
             }
             else
             {
-                logger.Info("Ошибка чтения объекта из XML файла: (" + filePath + ") Файл не найден!");
+                logger.Error("Ошибка чтения объекта из XML файла: (" + filePath + ") Файл не найден!");
                 return default;
             }
         }
@@ -88,7 +88,7 @@ namespace Music_Catalog
             catch (Exception e)
             {
                 Console.WriteLine("Произошла ошибка при сериализации объекта: " + e.Message);
-                logger.Info("Произошла ошибка при сериализации объекта, файл: (" + filePath + ") Файл не записан! Тип ошибки: " + e.Message);
+                logger.Error("Произошла ошибка при сериализации объекта, файл: (" + filePath + ") Файл не записан! Тип ошибки: " + e.Message);
             }
 
         }
@@ -114,13 +114,13 @@ namespace Music_Catalog
                 catch (Exception e)
                 {
                     Console.WriteLine("Произошла ошибка при десериализации объекта: " + e.Message);
-                    logger.Info("Произошла ошибка при десериализации объекта, файл: (" + filePath + ") Файл не прочитан! Тип ошибки: " + e.Message);
+                    logger.Error("Произошла ошибка при десериализации объекта, файл: (" + filePath + ") Файл не прочитан! Тип ошибки: " + e.Message);
                     return null;
                 }
             }
             else
             {
-                logger.Info("Ошибка чтения объекта из бинарного файла: (" + filePath + ") Файл не найден!");
+                logger.Error("Ошибка чтения объекта из бинарного файла: (" + filePath + ") Файл не найден!");
                 return null;
             }
         }
