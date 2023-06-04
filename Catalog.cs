@@ -11,16 +11,14 @@ using System.Xml.Serialization;
 
 namespace Music_Catalog
 {
-    public class Catalog //: ICatalog, IEnumerable<Album>
+    [Serializable]
+    public class Catalog
     {
-        private List<Album> myAlbum = new List<Album>();
+        public List<Album> myAlbum { get; set; }
 
-        public void Add(object obj)
+        public Catalog()
         {
-            if (obj is Album album)
-            {
-                AddSong(album);
-            }
+            myAlbum = new List<Album>();
         }
 
         public void AddSong()
@@ -38,17 +36,6 @@ namespace Music_Catalog
             myAlbum.Remove(album);
         }
 
- /*       public IEnumerator<Album> GetEnumerator()
-        {
-            return myAlbum.GetEnumerator();
-        }
-
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }*/
-
         public void PrintAlbum(Album album)
         {
             album.PrintAlbumInfo();
@@ -59,68 +46,6 @@ namespace Music_Catalog
             foreach (Album album in myAlbum)
             {
                 album.PrintAlbumInfo();
-            }
-        }
-
-
-
-        public  void SaveCatalogXml(object catalog, string filePath)
-        {
-            var serializer = new XmlSerializer(typeof(Catalog));
-            using (TextWriter writer = new StreamWriter(filePath))
-            {
-                serializer.Serialize(writer, catalog);
-            }
-            Console.WriteLine("Album data saved to XML file");
-
-
-        }
-        public  object LoadCatalogXml(string filePath)
-        {
-            var serializer = new XmlSerializer(typeof(object));
-            using (TextReader reader = new StreamReader(filePath))
-            {
-                return serializer.Deserialize(reader);
-            }
-        }
-
-
-
-        public void SerializeObjectBin(Object obj, string filePath)
-        {
-            try
-            {
-                using (FileStream writer = new FileStream(filePath, FileMode.Create))
-                {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(writer, obj);
-                }
-
-                Console.WriteLine("Объект успешно записан в файл: " + filePath);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Произошла ошибка при сериализации объекта: " + e.Message);
-            }
-        }
-
-
-
-
-        public object DeserializeObjectBin(string filePath)
-        {
-            try
-            {
-                using (FileStream reader = new FileStream(filePath, FileMode.Open))
-                {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    return formatter.Deserialize(reader);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Произошла ошибка при десериализации объекта: " + e.Message);
-                return null;
             }
         }
 

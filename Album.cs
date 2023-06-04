@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace Music_Catalog
 {
+    [Serializable]
     public class Album
     {
         public string Title { get; set; }
@@ -16,10 +17,7 @@ namespace Music_Catalog
         public TimeSpan Duration { get; set; }
         public string Studio { get; set; }
 
-        public Album() 
-        {
-            EnterAlbumInfo();
-        }
+        public Album() { }
 
         public Album(string title, string artistName, int year, TimeSpan duration, string studio)
         {

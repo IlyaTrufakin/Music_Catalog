@@ -3,7 +3,9 @@
 *.userosscache
 *.csproj
 *.sln
-*.config
+*.xsd
+App.config
+packages.config
 [Pp]roperties
 [Dd]ebug/
 [Dd]ebugPublic/
